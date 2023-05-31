@@ -3,18 +3,20 @@ package com.example.myapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.foundation.layout.Column
 import com.example.myapp.ui.theme.MyAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -42,16 +44,36 @@ fun AuthorInfo() {
         modifier = Modifier.fillMaxSize()
     ) {
         Text(text = "作者：資工四B 賴威銡")
-        Image(
-            painter = painterResource(R.drawable.map),
-            contentDescription = "Map Image"
-        )
-    }
-}
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+        Box(modifier = Modifier.fillMaxSize()) {
+            Image(
+                painter = painterResource(R.drawable.map),
+                contentDescription = "Map Image",
+                modifier = Modifier.fillMaxSize()
+            )
+
+            Canvas(modifier = Modifier.fillMaxSize()) {
+
+                val rect1Width = 40f
+                val rect1Height = 40f
+                val rect1Position = Offset(1670f, 880f)
+                drawRect(
+                    color = Color.Blue,
+                    topLeft = rect1Position,
+                    size = Size(rect1Width, rect1Height)
+                )
+
+                val rect2Width = 40f
+                val rect2Height = 40f
+                val rect2Position = Offset(780f, 115f)
+                drawRect(
+                    color = Color.Blue,
+                    topLeft = rect2Position,
+                    size = Size(rect2Width, rect2Height)
+                )
+            }
+        }
+    }
 }
 
 @Preview(showBackground = true)
